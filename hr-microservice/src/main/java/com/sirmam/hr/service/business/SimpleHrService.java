@@ -30,7 +30,7 @@ public class SimpleHrService implements HrService {
 										.photo(request.getPhoto().getBytes())
 										.birthYear(request.getBirthYear())
 										.build();
-		var emp = hrApplication.hireEmployee(employee);
+		hrApplication.hireEmployee(employee);
 		return new HireEmployeeResponse("success");
 	}
 

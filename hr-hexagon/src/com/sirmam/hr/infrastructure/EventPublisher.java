@@ -4,6 +4,6 @@ import com.sirmam.hr.events.EmployeeEvent;
 
 public interface EventPublisher {
 
-	void publish(EmployeeEvent employeeHiredEvent);
+	void publish(EmployeeEvent event);
 
 }

@@ -15,14 +15,14 @@ public class Employee {
 	private JobType jobType;
 	private Photo photo;
 	
-	private Employee(TcKimlikNo kimlikNo, FullName fullname, Money salary, BirthYear birthYear) {
+	public Employee(TcKimlikNo kimlikNo, FullName fullname, Money salary, BirthYear birthYear) {
 		this.kimlikNo = kimlikNo;
 		this.fullname = fullname;
 		this.salary = salary;
 		this.birthYear = birthYear;
 	}
 
-	private Employee(TcKimlikNo kimlikNo, FullName fullname, Money salary, Iban iban, BirthYear birthYear,
+	public Employee(TcKimlikNo kimlikNo, FullName fullname, Money salary, Iban iban, BirthYear birthYear,
 			Department department, JobType jobType, Photo photo) {
 		this.kimlikNo = kimlikNo;
 		this.fullname = fullname;
@@ -166,6 +166,14 @@ public class Employee {
 			this.fullname = FullName.of(first, first);
 			return this;
 		}
+		
+		public Builder fullname(String fullname) {
+			var tokens = fullname.split(" ");
+			if(tokens.length != 2) throw new IllegalArgumentException("does not match: firstname lastname");
+			this.fullname = FullName.of(tokens[0], tokens[1]);
+			return this;
+		}
+				
 		
 		public Builder salary(double value, FiatCurrency currency) {
 			this.salary = Money.of(value, currency);
