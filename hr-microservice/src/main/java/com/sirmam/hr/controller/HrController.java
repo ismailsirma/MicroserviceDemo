@@ -1,6 +1,7 @@
 package com.sirmam.hr.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import com.sirmam.hr.dto.FireEmployeeResponse;
 import com.sirmam.hr.dto.HireEmployeeRequest;
 import com.sirmam.hr.dto.HireEmployeeResponse;
 import com.sirmam.hr.service.HrService;
+import com.sirmam.hr.validation.TcKimlikNo;
 
 @RestController
 @RequestScope
@@ -27,13 +29,13 @@ public class HrController {
 	
 	// ACL : Anti-Corruption Layer
 	@PostMapping
-	public HireEmployeeResponse hireEmployee(@RequestBody HireEmployeeRequest request) {
+	public HireEmployeeResponse hireEmployee(@RequestBody @Validated HireEmployeeRequest request) {
 		return hrService.hireEmployee(request);
 	}
 	
 	// DELETE /employees/1111111110
 	@DeleteMapping("{identity}")
-	public FireEmployeeResponse hireEmployee(@PathVariable("identity") String identity) {
+	public FireEmployeeResponse hireEmployee(@PathVariable("identity") @Validated @TcKimlikNo String identity) {
 		return hrService.fireEmployee(identity);
 	}
 	
