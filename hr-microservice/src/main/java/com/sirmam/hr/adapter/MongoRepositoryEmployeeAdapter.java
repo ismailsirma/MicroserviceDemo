@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.sirmam.hr.document.EmployeeDocument;
@@ -21,6 +22,10 @@ public class MongoRepositoryEmployeeAdapter implements EmployeeRepository {
 	@Autowired
 	private EmployeeDocumentRepository employeeDocumentRepository;
 
+	// low level database interactions
+	@Autowired
+	private MongoTemplate mongoTemplate;
+	
 	@Autowired
 	private ModelMapper mapper;
 	
