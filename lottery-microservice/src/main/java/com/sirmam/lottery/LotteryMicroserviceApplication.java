@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // mvn clean install spring-boot:repackage
 // java -jar app.jar
 // mvn clean install spring-boot:run
+//curl http://localhost:7700/lottery/api/v1/actuator/refresh -X POST -d {} -H "Content-Type: application/json"
 @SpringBootApplication
 public class LotteryMicroserviceApplication {
 
